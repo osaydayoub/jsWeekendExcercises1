@@ -8,10 +8,10 @@
 ////  4.1,
 ////  5.1
 //// 5.2
-// 5.3,
-//  5.5,
-//  5.6
-//  5.7,
+//// 5.3,
+////  5.5,
+////  5.6
+////  5.7,
 //  6.1,
 //  6.2,
 //  6.4
@@ -210,7 +210,7 @@ function trimmingString(str){
 // res
 
 //Ex5.2 - String Repeat
-function repeat_str(n,src){
+function repeatStr(n,src){
     let newStr='';
     for(let i=0;i<n;i++){
         newStr+=src;
@@ -219,12 +219,127 @@ function repeat_str(n,src){
 }
 
 // //test
-// let res=repeat_str( 6, "I");
+// let res=repeatStr( 6, "I");
 // res
-// res=repeat_str( 5, "Hello");
+// res=repeatStr( 5, "Hello");
 // res
 
+//Ex5.3 - To Camel Case
+function toCamelCase(str){
+    let newStr='';
+    for(let i=0;i<str.length;i++){
+       if(str[i]==='_'||str[i]==='-'){
+            if(i+1<str.length && str[i+1]!=='-' && str[i+1]!=='_'){
+                newStr+=str[i+1].toUpperCase();
+            }
+            i++;
+       }else{
+        newStr+=str[i].toLowerCase();
+       }
+    }
+    return newStr;
+}
 
+// //test
+// let res=toCamelCase('the-stealth-warrior');
+// res
+// res=toCamelCase( 'The_Stealth_Warrior');
+// res
+//in the example the first letter is in UpperCase
+function toCamelCase1(str){
+    let newStr='';
+    for(let i=0;i<str.length;i++){
+       if(str[i]==='_'||str[i]==='-'){
+            if(i+1<str.length && str[i+1]!=='-' && str[i+1]!=='_'){
+                newStr+=str[i+1].toUpperCase();
+            }
+            i++;
+       }else{
+        newStr+=str[i];
+       }
+    }
+    return newStr;
+}
+// //test2
+// let res=toCamelCase1('the-stealth-warrior');
+// res
+// res=toCamelCase1( 'The_Stealth_Warrior');
+// res
 
+//Ex5.5 - Abbreviate two words
+function convertIntoInitials(name){
+    let newStr='';
+    newStr+=name[0].toUpperCase();
+    for(let i=0;i<name.length;i++){
+       if(name[i]===' '){
+        newStr+='.';
+        newStr+=name[i+1].toUpperCase();
+        break;
+       }
+    }
+    return newStr;
+}
 
+// //test
+// let res=convertIntoInitials('Sam Harris');
+// res
+// res=convertIntoInitials('Patrick Feeney');
+// res
+
+//Ex5.6 - Mask
+function maskify(str){
+    let newStr='';
+    for(let i=0;i<str.length;i++){
+       if(i<str.length-4){
+        newStr+='#';   
+       }else{
+        newStr+=str[i];
+       }
+    }
+    return newStr;
+}
+
+// //test
+// let res=maskify('4556364607935616');
+// res
+// res=maskify('64607935616');
+// res
+// res=maskify('1');
+// res
+// res=maskify('');
+// res
+// res=maskify('Skippy');
+// res
+// res=maskify('Nananananananananananananananana Batman!');
+// res
+
+//Ex5.7 - shortest words
+function shortestWords(str){
+    let shortest=str.length;
+    let count=0;
+    let res=str.length
+    res
+    for(let i=0;i<str.length;i++){
+        if(str[i]===' '){
+         if(count<shortest){
+            shortest=count;
+         } 
+         count=0; 
+        }else{
+            count++;
+        }
+     }
+     // no space in the end 
+     if(count<shortest){
+        shortest=count;
+     } 
+     return shortest;
+}
+// //test
+// let res=shortestWords('aa aa aaaa aaaa aaa aaaa');
+// res
+// res=shortestWords('6460793 561 6');
+// res
+// res=shortestWords('1234 12345 12 123');
+// res
 
