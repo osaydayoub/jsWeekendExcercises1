@@ -1,20 +1,3 @@
-//// 1.1,
-////  2.1,
-////  2.3,
-////  2.4,
-////  2.5,
-////  2.6,
-////  2.7,
-////  4.1,
-////  5.1
-//// 5.2
-//// 5.3,
-////  5.5,
-////  5.6
-////  5.7,
-//  6.1,
-//  6.2,
-//  6.4
 //Ex1.1 - Yes or No
 const ex1={
     yesNO : function(bool){
@@ -343,3 +326,96 @@ function shortestWords(str){
 // res=shortestWords('1234 12345 12 123');
 // res
 
+//Ex6.1 - Mumbling
+function accum(str){
+    let newStr='';
+    for(let i=0;i<str.length;i++){
+        for(let j=0;j<=i;j++){
+            if(j===0){
+                newStr+=str[i].toUpperCase();
+                
+            }else{
+                newStr+=str[i].toLowerCase();
+            }
+        }
+        if(i<str.length-1){
+            newStr+='-'
+        }
+    }
+    return newStr;
+}
+// //test
+// let res=accum('abcd');
+// res
+// res=accum('RqaEzty');
+// res
+// res=accum('cwAt');
+// res
+
+//Ex6.2 - Counting Duplicates
+function CountDuplicates(str){
+    //a-z +0-9
+    let histogram= new Array('z'.charCodeAt(0)-'a'.charCodeAt(0)+11);
+    histogram.fill(0);
+    // histogram
+    // let res=histogram.length
+    // res
+    let count=0;
+    let index=0;
+    for(let i=0;i<str.length;i++){
+        if(str[i]>='a'&&str[i]<='z'){
+            index=str.charCodeAt(i)-'a'.charCodeAt(0);
+            index
+            histogram[index]++;
+        }
+        if(str[i]>='A'&&str[i]<='Z'){
+            index=str.charCodeAt(i)-'A'.charCodeAt(0);
+            index
+            histogram[index]++;
+        }
+        if(str[i]>='0'&&str[i]<='9'){
+            index=str.charCodeAt(i)-'0'.charCodeAt(0);
+            index=index+26;
+            index
+            histogram[index]++;
+        }
+    }
+    for(let i=0;i<histogram.length;i++){
+        if(histogram[i]>1){
+            count++;
+        }
+    }
+    return count;
+}
+// // test
+// let res=CountDuplicates('abcde');
+// res
+// res=CountDuplicates('aabbcde');
+// res
+// res=CountDuplicates('aabBcde');
+// res
+// res=CountDuplicates('indivisibility');
+// res
+// res=CountDuplicates('Indivisibilities');
+// res
+// res=CountDuplicates('aA11');
+// res
+// res=CountDuplicates('ABBA');
+// res
+
+//Ex6.4 - isogram
+function isIsogram(str){
+    let countDuplicates=CountDuplicates(str)
+    if(countDuplicates>=1){
+        return false;
+    }
+    return true;
+}
+
+// // test
+// let res=isIsogram('Dermatoglyphics');
+// res
+// res=isIsogram('aba');
+// res
+// res=isIsogram('moOse');
+// res
